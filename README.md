@@ -31,6 +31,26 @@ Testing and issue reports from Drupal, Joomla, Backdrop, and CiviCRM Standalone
 users are especially welcome. Cross-CMS support should be considered an
 intention, not a verified claim, until that testing has taken place.
 
+## Screenshots
+
+### Event registration
+
+| Desktop | Mobile |
+| --- | --- |
+| [![Event registration on desktop](docs/screenshots/event-registration-desktop.jpg)](docs/screenshots/event-registration-desktop.jpg) | [![Event registration on mobile](docs/screenshots/event-registration-mobile.jpg)](docs/screenshots/event-registration-mobile.jpg) |
+
+### Donation form
+
+| Desktop | Mobile |
+| --- | --- |
+| [![Donation form on desktop](docs/screenshots/donation-desktop.jpg)](docs/screenshots/donation-desktop.jpg) | [![Donation form on mobile](docs/screenshots/donation-mobile.jpg)](docs/screenshots/donation-mobile.jpg) |
+
+### Standalone Profile form
+
+| Desktop | Mobile |
+| --- | --- |
+| [![Standalone Profile form on desktop](docs/screenshots/profile-desktop.jpg)](docs/screenshots/profile-desktop.jpg) | [![Standalone Profile form on mobile](docs/screenshots/profile-mobile.jpg)](docs/screenshots/profile-mobile.jpg) |
+
 ## Features
 
 - Responsive public Profiles and event-registration forms

@@ -17,6 +17,7 @@ mkdir -p "$stage_dir/bronx"
 cp "$root_dir/info.xml" "$root_dir/bronx.php" "$root_dir/README.md" \
   "$root_dir/LICENSE" "$root_dir/CHANGELOG.md" "$stage_dir/bronx/"
 cp -R "$root_dir/docs" "$root_dir/managed" "$root_dir/streams" "$stage_dir/bronx/"
+rm -rf "$stage_dir/bronx/docs/screenshots"
 
 rm -f "$artifact"
 (cd "$stage_dir" && zip -qr "$artifact" bronx)
