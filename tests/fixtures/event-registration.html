@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bronx event registration coverage</title>
+  <style>
+    :root {
+      --crm-text-color: #243043;
+      --crm-inactive-color: #64748b;
+      --crm-danger-color: #b42318;
+      --crm-info-color: #1769aa;
+      --crm-info-light-color: #eaf5ff;
+      --crm-info-ink-color: #12344d;
+      --crm-input-border: 1px solid var(--crm-input-border-color);
+      --crm-input-bg-color: #fff;
+      --crm-input-color: #172033;
+    }
+    body { margin: 0; padding: 30px; color: var(--crm-text-color); font: 16px/1.5 system-ui, sans-serif; }
+    .fixture-cms-column { inline-size: min(80%, 70rem); margin-inline: auto; }
+    .messages.help { padding: 0.5rem 0.75rem; background: #eef8ee; }
+  </style>
+  <link rel="stylesheet" href="../../streams/bronx/_main.css">
+</head>
+<body>
+<div class="fixture-cms-column">
+<div id="crm-container" class="crm-container crm-public">
+<div id="crm-main-content-wrapper">
+  <form class="CRM_Event_Form_Registration_Register">
+    <div class="crm-public-form-item crm-section additional_participants-section" id="noOfparticipants">
+      <div class="label"><label for="additional_participants">How many people are you registering?</label></div>
+      <div class="content"><select id="additional_participants" class="crm-form-select"><option>1</option></select>(including yourself)<br></div>
+    </div>
+
+    <div class="crm-public-form-item crm-section cms_user-section">
+      <fieldset class="crm-profile">
+        <legend>Account</legend>
+        <div class="crm-section form-item">
+          <div class="label"><label for="cms_name">Username</label></div>
+          <div class="content"><input id="cms_name" class="crm-form-text" type="text"></div>
+        </div>
+      </fieldset>
+    </div>
+
+    <fieldset class="crm-profile">
+      <legend>Test all fields</legend>
+      <div class="crm-section helprow-first_name-section helprow-pre"><div class="content description">Pre-field help explains the requested value.</div></div>
+      <div class="crm-section form-item">
+        <div class="label"><label for="first_name">First Name <span class="crm-marker">*</span></label></div>
+        <div class="content"><input id="first_name" class="big crm-form-text required" type="text"></div>
+        <div class="clear"></div>
+      </div>
+      <div class="crm-section helprow-first_name-section helprow-post"><div class="content description">Post-field help follows the control.</div></div>
+
+      <div class="crm-section editrow_birth_date-section form-item" id="editrow-birth_date">
+        <div class="label"><label for="birth_date">Birth Date</label></div>
+        <div class="content">
+          <span class="crm-form-date-wrapper">
+            <input id="birth_date" class="crm-form-text crm-hidden-date" type="text" hidden>
+            <input class="crm-form-text crm-form-date crm-placeholder-icon" type="text" aria-label="Select Date" placeholder="">
+            <a class="crm-hover-button crm-clear-link" style="visibility:hidden"><i class="crm-i fa-times"></i></a>
+          </span>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="crm-section editrow_group-section form-item" id="editrow-group">
+        <div class="label"></div><div class="content"> </div><div class="clear"></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label">Radio choices</div>
+        <div class="content"><div class="crm-multiple-checkbox-radio-options">
+          <div class="crm-option-label-pair"><input id="radio-yes" type="radio" name="radio"><label for="radio-yes">Yes</label></div>
+          <div class="crm-option-label-pair"><input id="radio-no" type="radio" name="radio"><label for="radio-no">No</label></div>
+        </div></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label">Checkbox choices</div>
+        <div class="content"><div class="crm-multiple-checkbox-radio-options">
+          <div class="crm-option-label-pair"><input id="check-one" type="checkbox"><label for="check-one">Short choice</label></div>
+          <div class="crm-option-label-pair"><input id="check-two" type="checkbox"><label for="check-two">A deliberately long checkbox choice that should wrap cleanly</label></div>
+        </div></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label">Rich text</div>
+        <div class="content"><div class="note-editor note-frame">
+          <div class="note-toolbar"><div class="note-btn-group"><button class="note-btn" type="button">B</button><button class="note-btn" type="button">I</button></div></div>
+          <div style="min-height:8rem"></div>
+        </div></div>
+      </div>
+    </fieldset>
+
+    <fieldset class="crm-public-form-item crm-group priceset-group">
+      <legend>Event Fee(s)</legend>
+      <div class="crm-section price_set-section">
+        <div class="messages help">Choose the appropriate event options.</div>
+
+        <div class="crm-section donation-section crm-price-field-id-1">
+          <div class="label"><label for="price_quantity">Additional Donation</label></div>
+          <div class="content">
+            <input id="price_quantity" class="four crm-form-text" type="text">
+            <label><span class="crm-price-amount-amount">$1.00</span></label>
+            <div class="description">Enter a whole number.</div>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="crm-section ticket-section crm-price-field-id-2">
+          <div class="label"><label>Ticket type</label></div>
+          <div class="content">
+            <div class="price-set-row"><span class="price-set-option-content"><div class="crm-option-label-pair">
+              <input id="ticket-free" type="radio" name="ticket"><label for="ticket-free"><span class="crm-price-amount-label">Free RSVP</span><span class="crm-price-amount-label-separator"> – </span><span class="crm-price-amount-amount">$0.00</span></label>
+            </div></span></div>
+            <div class="price-set-row"><span class="price-set-option-content"><div class="crm-option-label-pair">
+              <input id="ticket-paid" type="radio" name="ticket"><label for="ticket-paid"><span class="crm-price-amount-label">Supporter</span><span class="crm-price-amount-label-separator"> – </span><span class="crm-price-amount-amount">$25.00</span></label>
+            </div></span></div>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="crm-section extras-section crm-price-field-id-3">
+          <div class="label"><label>Optional extras</label></div>
+          <div class="content"><div class="price-set-row"><span class="price-set-option-content"><div class="crm-option-label-pair">
+            <input id="extra-one" type="checkbox"><label for="extra-one"><span class="crm-price-amount-label">Printed program</span><span class="crm-price-amount-label-separator"> – </span><span class="crm-price-amount-amount">$5.00</span></label>
+          </div></span></div></div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="crm-section select-section crm-price-field-id-4">
+          <div class="label"><label for="price_select">Meal selection</label></div>
+          <div class="content"><select id="price_select" class="crm-form-select"><option>Select a meal</option></select></div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="crm-section section-pricesetTotal" id="pricesetTotal">
+          <div class="label">Total for this participant</div><div class="content">$0.00</div>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="crm-submit-buttons"><button class="crm-button" type="button"><i class="crm-i fa-check">✓</i> Register</button></div>
+  </form>
+</div>
+</div>
+</div>
+</body>
+</html>

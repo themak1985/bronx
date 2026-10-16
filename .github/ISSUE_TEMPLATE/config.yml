@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security report
+    url: mailto:bashar.makhay@gmail.com?subject=Bronx%20security%20report
+    about: Report suspected vulnerabilities privately.

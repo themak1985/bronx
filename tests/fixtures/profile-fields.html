@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bronx Profile field coverage</title>
+  <style>
+    :root {
+      --crm-text-color: #243043;
+      --crm-inactive-color: #64748b;
+      --crm-danger-color: #b42318;
+      --crm-info-color: #1769aa;
+      --crm-info-light-color: #eaf5ff;
+      --crm-info-ink-color: #12344d;
+      --crm-input-border: 1px solid var(--crm-input-border-color);
+      --crm-input-bg-color: #fff;
+      --crm-input-color: #172033;
+    }
+    body { margin: 0; padding: 30px; color: var(--crm-text-color); font: 16px/1.5 system-ui, sans-serif; }
+    .fixture-cms-column { inline-size: 80%; margin-inline: auto; }
+    .fixture-river-core #crm-main-content-wrapper { margin-inline: auto; width: clamp(24rem, 100%, 48rem); }
+    .select2-search-choice-close { display: block; }
+    .select2-search-choice-close::before { content: "×"; position: absolute; inset: -0.4rem; display: grid; place-items: center; }
+    .select2-arrow::before { content: "⌄"; }
+  </style>
+  <link rel="stylesheet" href="../../streams/bronx/_main.css">
+</head>
+<body>
+<div class="fixture-cms-column">
+<div id="crm-container" class="crm-container crm-public fixture-river-core">
+<div id="crm-main-content-wrapper">
+  <form class="CRM_Profile_Form_Edit">
+    <fieldset class="crm-profile">
+      <legend>Field coverage</legend>
+
+      <div class="crm-section form-item">
+        <div class="label"><label for="sample-date">Compact date</label></div>
+        <div class="content"><input id="sample-date" class="crm-form-text crm-form-date" type="text" placeholder="MM/DD/YYYY"></div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label"><label for="sample-name">Standard text <span class="crm-marker">*</span></label></div>
+        <div class="content"><input id="sample-name" class="big crm-form-text required" type="text"></div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label"><label for="sample-select">Standard select</label></div>
+        <div class="content"><select id="sample-select" class="crm-form-select"><option>Select an option</option></select></div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label"><label>Standard multiselect</label></div>
+        <div class="content">
+          <div class="select2-container select2-container-multi huge crm-select2 crm-form-multiselect">
+            <ul class="select2-choices">
+              <li class="select2-search-choice"><div>Selected value</div><a class="select2-search-choice-close" href="#" aria-label="Remove Selected value"></a></li>
+              <li class="select2-search-field"><input class="select2-input" type="text" aria-label="Add another value"></li>
+            </ul>
+            <div class="select2-drop select2-drop-multi select2-display-none"><ul class="select2-results"></ul></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label"><label>Clearable single select</label></div>
+        <div class="content">
+          <div class="select2-container crm-select2 crm-form-select select2-allowclear">
+            <a class="select2-choice" href="#"><span class="select2-chosen">Selected option</span><abbr class="select2-search-choice-close"></abbr><span class="select2-arrow"><b></b></span></a>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label"><label>Entity reference</label></div>
+        <div class="content">
+          <div class="select2-container crm-form-autocomplete crm-ajax-select" style="width:430px">
+            <a class="select2-choice" href="#"><span class="select2-chosen">Select an activity</span><span class="select2-arrow"><b></b></span></a>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label"><label for="sample-file">Wide file upload</label></div>
+        <div class="content"><input id="sample-file" class="crm-form-file" type="file"></div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label"><label for="sample-notes">Full-width notes</label></div>
+        <div class="content"><textarea id="sample-notes" class="crm-form-textarea" rows="5"></textarea></div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="crm-section form-item">
+        <div class="label">Choice group</div>
+        <div class="content crm-multiple-checkbox-radio-options">
+          <span class="crm-option-label-pair"><input id="choice-one" type="checkbox"><label for="choice-one">First choice</label></span>
+          <span class="crm-option-label-pair"><input id="choice-two" type="checkbox"><label for="choice-two">Second choice</label></span>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </fieldset>
+
+    <table class="form-layout-compressed">
+      <tbody><tr>
+        <td class="recaptcha_label">&nbsp;</td>
+        <td><div class="g-recaptcha"><div style="width:304px;height:78px;background:#f9f9f9;border:1px solid #d5d5d5;display:grid;place-items:center;box-sizing:border-box">304px reCAPTCHA</div></div></td>
+      </tr></tbody>
+    </table>
+
+    <div class="crm-submit-buttons">
+      <button class="crm-button default" type="submit"><i class="crm-i fa-check" aria-hidden="true"></i> Submit</button>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+<div class="select2-drop select2-drop-multi crm-container crm-public" style="width: 24rem" hidden></div>
+</body>
+</html>

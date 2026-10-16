@@ -1,0 +1,55 @@
+name: Bug report
+description: Report a reproducible Bronx styling or compatibility problem.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Do not include personal records, payment data, credentials, or private URLs.
+  - type: input
+    id: bronx-version
+    attributes:
+      label: Bronx version
+      placeholder: 0.6.0
+    validations:
+      required: true
+  - type: input
+    id: civicrm-version
+    attributes:
+      label: CiviCRM version
+      placeholder: 6.16
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: CMS, CMS theme, browser, and viewport
+      placeholder: WordPress 6.x, Twenty Twenty-Five, Firefox, 390px
+    validations:
+      required: true
+  - type: textarea
+    id: form
+    attributes:
+      label: Form and field configuration
+      description: Identify the CiviCRM workflow, form, field type, and relevant options.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true

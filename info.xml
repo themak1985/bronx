@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<extension key="bronx" type="module">
+  <file>bronx</file>
+  <name>Bronx</name>
+  <description>A modern, accessible River Stream for responsive public-facing CiviCRM forms.</description>
+  <license>AGPL-3.0-or-later</license>
+  <maintainer>
+    <author>Bashar Makhay</author>
+    <email>bashar.makhay@gmail.com</email>
+  </maintainer>
+  <urls>
+    <url desc="Main Extension Page">https://github.com/themak1985/bronx</url>
+    <url desc="Documentation">https://github.com/themak1985/bronx#readme</url>
+    <url desc="Support">https://github.com/themak1985/bronx/issues</url>
+    <url desc="Licensing">https://www.gnu.org/licenses/agpl-3.0.html</url>
+  </urls>
+  <releaseDate>2026-10-16</releaseDate>
+  <version>0.6.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>6.16</ver>
+  </compatibility>
+  <smarty_compatibility>
+    <ver>5.0</ver>
+  </smarty_compatibility>
+  <php_compatibility>
+    <ver>8.1</ver>
+    <ver>8.2</ver>
+    <ver>8.3</ver>
+    <ver>8.4</ver>
+    <ver>8.5</ver>
+  </php_compatibility>
+  <requires>
+    <ext>riverlea</ext>
+  </requires>
+  <mixins>
+    <mixin>mgd-php@1.1.0</mixin>
+  </mixins>
+  <comments>Bronx is a lightweight, CMS-agnostic RiverLea Stream that modernizes responsive public-facing CiviCRM forms. The initial reference implementation is tested with WordPress, while selectors remain scoped to CiviCRM markup for use with other supported CMS platforms.</comments>
+</extension>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bronx standalone Profile coverage</title>
+  <style>
+    :root {
+      --crm-text-color: #243043;
+      --crm-inactive-color: #64748b;
+      --crm-danger-color: #b42318;
+      --crm-info-color: #1769aa;
+      --crm-info-light-color: #eaf5ff;
+      --crm-info-ink-color: #12344d;
+      --crm-input-border: 1px solid var(--crm-input-border-color);
+      --crm-input-bg-color: #fff;
+      --crm-input-color: #172033;
+    }
+    body { margin: 0; padding: 30px; color: var(--crm-text-color); font: 16px/1.5 system-ui, sans-serif; }
+    .fixture-cms-column { inline-size: min(80%, 70rem); margin-inline: auto; }
+  </style>
+  <link rel="stylesheet" href="../../streams/bronx/_main.css">
+</head>
+<body>
+<div class="fixture-cms-column">
+<div id="crm-container" class="crm-container crm-public">
+<div id="crm-main-content-wrapper">
+  <form id="Edit" class="CRM_Profile_Form_Edit">
+    <div class="crm-profile-name-Volunteer_Sign_Up">
+      <div id="crm-profile-block" class="crm-container crm-public">
+        <fieldset class="crm-group crm_user-group">
+          <legend>Account</legend>
+          <div class="messages help cms_user_help-section">Create an account, or sign in before completing this form.</div>
+          <div id="details" class="crm_user_signup-section">
+            <div class="form-layout-compressed">
+              <div class="crm-section cms_name-section">
+                <div class="label"><label for="cms_name">Username <span class="crm-marker">*</span></label></div>
+                <div class="content">
+                  <input id="cms_name" class="crm-form-text required" type="text">
+                  <a id="checkavailability" href="#">Check Availability</a>
+                  <span class="description">Letters, numbers, periods, hyphens, and underscores are accepted.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="crm-section helprow-first_name-section helprow-pre">
+          <div class="content description">Field-level instructions before the control.</div>
+        </div>
+        <div id="editrow-first_name" class="crm-section editrow_first_name-section form-item">
+          <div class="label"><label for="first_name">First Name <span class="crm-marker">*</span></label></div>
+          <div class="edit-value content"><input id="first_name" class="big crm-form-text required" type="text"></div>
+          <div class="clear"></div>
+        </div>
+        <div class="crm-section helprow-first_name-section helprow-post">
+          <div class="content description">Field-level instructions after the control.</div>
+        </div>
+
+        <div id="editrow-email-Primary" class="crm-section editrow_email-section form-item">
+          <div class="label"><label for="email-Primary">Email <span class="crm-marker">*</span></label></div>
+          <div class="edit-value content"><input id="email-Primary" class="big crm-form-text required" type="email"></div>
+          <div class="clear"></div>
+        </div>
+
+        <div id="editrow-preferred_language" class="crm-section editrow_preferred_language-section form-item">
+          <div class="label"><label for="preferred_language">Preferred Language</label></div>
+          <div class="edit-value content"><select id="preferred_language" class="crm-form-select"><option>Select a language</option></select></div>
+          <div class="clear"></div>
+        </div>
+
+        <table class="form-layout-compressed">
+          <tbody><tr>
+            <td class="recaptcha_label">CAPTCHA</td>
+            <td><div class="g-recaptcha"><div style="width:304px;height:78px;background:#f9f9f9;border:1px solid #d5d5d5;display:grid;place-items:center;box-sizing:border-box">304px reCAPTCHA</div></div></td>
+          </tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="crm-submit-buttons"><button class="crm-button default" type="submit"><i class="crm-i fa-check" aria-hidden="true"></i> Submit</button></div>
+  </form>
+</div>
+</div>
+</div>
+</body>
+</html>

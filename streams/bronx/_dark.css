@@ -1,0 +1,15 @@
+/**
+ * Bronx River Stream - dark mode
+ */
+
+:root {
+  --crm-primary-color: #7cc4ff;
+  --crm-primary-hover-color: #a7d8ff;
+  --crm-primary-text-color: #071521;
+  --crm-link-color: #7cc4ff;
+  --crm-link-hover-color: #a7d8ff;
+  --crm-focus-color: #7cc4ff;
+  --crm-border-color: #475569;
+  --crm-input-border-color: #64748b;
+  --bronx-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23cbd5e1' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75'/%3E%3C/svg%3E");
+}

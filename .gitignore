@@ -1,0 +1,3 @@
+/dist/*.zip
+/tmp/
+.DS_Store

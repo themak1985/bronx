@@ -1,0 +1,1200 @@
+/**
+ * Bronx River Stream - light mode
+ *
+ * Bronx is named for the Bronx River. It modernizes public Profiles and
+ * event-registration forms without imposing a page background or changing
+ * unrelated public CiviCRM components.
+ */
+
+:root {
+  /* River tokens. Keep the CMS typeface by default. */
+  --crm-font: inherit;
+  --crm-font-size: 1rem;
+  --crm-font-line-height: 1.5;
+  --crm-primary-color: #1769aa;
+  --crm-primary-hover-color: #0f568e;
+  --crm-primary-text-color: #fff;
+  --crm-link-color: #1769aa;
+  --crm-link-hover-color: #0f568e;
+  --crm-focus-color: #1769aa;
+  --crm-border-color: #cbd5e1;
+  --crm-l-radius: 0.5rem;
+  --crm-btn-radius: 0.5rem;
+  --crm-btn-height: 2.75rem;
+  --crm-btn-padding-block: 0.65rem;
+  --crm-btn-padding-inline: 1.5rem;
+  --crm-input-height: 2.75rem;
+  --crm-input-border-color: #94a3b8;
+  --crm-input-border-radius: 0.375rem;
+  --crm-input-padding: 0.625rem 0.75rem;
+  --crm-input-font-size: 1rem;
+  --crm-form-block-border-radius: 0;
+  --crm-form-block-box-shadow: none;
+}
+
+/*
+ * Legacy public-form tokens
+ * -------------------------
+ * Keep River's frontend layout variables off :root. Afform/FormBuilder has
+ * its own layout primitives and must not inherit the legacy Profile layout.
+ */
+#crm-container.crm-public {
+  /* The host CMS supplies page gutters; River's 3rem app-shell padding does not. */
+  --crm-page-padding: 0;
+  --crm-f-form-width: 60rem;
+  --crm-f-box-shadow: none;
+  --crm-f-fieldset-bg-color: transparent;
+  --crm-f-fieldset-padding: clamp(1rem, 3vw, 2rem) 0;
+  --crm-f-fieldset-margin: 0;
+  --crm-f-fieldset-border: 0;
+  --crm-f-fieldset-box-shadow: none;
+  --crm-f-legend-position: left;
+  --crm-f-legend-align: left;
+  --crm-f-legend-size: clamp(1.125rem, 2vw, 1.375rem);
+  --crm-f-legend-padding: 0 0 0.75rem;
+  --crm-f-legend-margin: 0 0 1.25rem;
+  --crm-f-legend-border: 0 0 1px 0;
+  --crm-f-form-padding: 0;
+  --crm-f-form-layout: block;
+  --crm-f-label-position: unset;
+  --crm-f-label-align: left;
+  --crm-f-label-width: auto;
+  --crm-f-label-gap: 0.5rem;
+  --crm-f-label-margin: 0 0 0.5rem;
+  --crm-f-label-weight: 600;
+  --crm-f-input-radius: 0.375rem;
+  --crm-f-input-padding: 0.625rem 0.75rem;
+  --crm-f-input-font-size: 1rem;
+  --crm-f-input-width: 100%;
+  --crm-f-form-focus-bg-color: transparent;
+  --crm-f-form-focus-outline-color: color-mix(in srgb, var(--crm-focus-color) 28%, transparent);
+  --crm-f-form-focus-border-color: var(--crm-focus-color);
+  --crm-f-form-focus-border-width: 0;
+  --crm-f-form-error-bg-color: transparent;
+  --crm-f-form-error-outline-color: color-mix(in srgb, var(--crm-danger-color) 18%, transparent);
+  --crm-f-form-error-border-color: var(--crm-danger-color);
+  --crm-f-form-error-border-width: 0;
+
+  /*
+   * A deliberately small field-width vocabulary. CiviCRM's legacy size
+   * classes and semantic control classes map to one of these four values.
+   */
+  --bronx-field-compact: 12rem;
+  --bronx-field-standard: 24rem;
+  --bronx-field-wide: 36rem;
+  --bronx-field-full: var(--crm-f-form-width);
+  --bronx-field-width: var(--bronx-field-standard);
+  --bronx-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23475569' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75'/%3E%3C/svg%3E");
+  min-block-size: auto;
+}
+
+/* Do not constrain .crm-public itself; non-form components need their width. */
+#crm-container.crm-public #crm-main-content-wrapper {
+  box-sizing: border-box;
+  inline-size: min(100%, var(--crm-f-form-width));
+  max-inline-size: 100%;
+  margin-inline: auto;
+}
+
+#crm-container.crm-public :is(
+  form.CRM_Event_Form_Registration_Register,
+  form.CRM_Profile_Form_Edit,
+  form.CRM_Contribute_Form_Contribution_Main
+) {
+  box-sizing: border-box;
+  inline-size: min(100%, var(--crm-f-form-width));
+  margin-inline: auto;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  margin: 0;
+  padding: var(--crm-f-fieldset-padding);
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > legend {
+  box-sizing: border-box;
+  inline-size: 100%;
+  margin: var(--crm-f-legend-margin);
+  padding: var(--crm-f-legend-padding);
+  border-style: solid;
+  border-color: var(--crm-border-color);
+  border-width: var(--crm-f-legend-border);
+  color: var(--crm-text-color);
+  font-size: var(--crm-f-legend-size);
+  font-weight: 650;
+  line-height: 1.3;
+  text-align: var(--crm-f-legend-align);
+}
+
+/* Replace the legacy float/table-like Profile row with a stacked field. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > .crm-section.form-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem;
+  min-inline-size: 0;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > .crm-section.form-item > :is(.label, .content) {
+  float: none;
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  text-align: start;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > .crm-section.form-item > .label,
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > .crm-section.form-item > .label label {
+  color: var(--crm-text-color);
+  font-size: 1rem;
+  font-weight: var(--crm-f-label-weight);
+  line-height: 1.4;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .crm-marker {
+  margin-inline-start: 0.125rem;
+  color: var(--crm-danger-color);
+  font-weight: 700;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > .crm-section.form-item > .clear {
+  display: none;
+}
+
+/* Do not reserve a field-sized gap for an empty public Groups selector. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > .crm-section.form-item.editrow_group-section:not(:has(
+  input,
+  select,
+  textarea,
+  button,
+  a
+)) {
+  display: none;
+}
+
+/*
+ * Field widths
+ * ------------
+ * Default legacy controls are standard width. Width is always capped by the
+ * available content column, so no field can create horizontal scrolling.
+ */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(
+  input.crm-form-text:not(.crm-hidden-date),
+  select.crm-form-select,
+  select.crm-form-multiselect,
+  input.crm-form-file,
+  input[type="file"],
+  .crm-form-date-wrapper,
+  .select2-container
+) {
+  box-sizing: border-box;
+  inline-size: min(100%, var(--bronx-field-width)) !important;
+  max-inline-size: 100%;
+}
+
+/*
+ * Standard: ordinary text fields plus every choice/reference control.
+ * A single width keeps native selects, Select2 single/multiple widgets, and
+ * contact/entity references aligned even when CiviCRM adds `huge` classes.
+ */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(
+  input.crm-form-text,
+  select.crm-form-select,
+  select.crm-form-multiselect,
+  .select2-container,
+  .crm-form-contact-reference
+) {
+  --bronx-field-width: var(--bronx-field-standard);
+}
+
+/* Compact: dates, times, short numeric/text values, and legacy short sizes. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(
+  input.crm-form-text.four,
+  input.crm-form-text.six,
+  input.crm-form-text.eight,
+  input.crm-form-date,
+  input.crm-form-time,
+  input[type="date"],
+  input[type="time"],
+  input[type="number"],
+  .crm-form-date-wrapper
+) {
+  --bronx-field-width: var(--bronx-field-compact);
+}
+
+/* Wide: long free-form values and uploads. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(
+  input.crm-form-text.huge,
+  input.crm-form-file,
+  input[type="file"]
+) {
+  --bronx-field-width: var(--bronx-field-wide);
+}
+
+/* Full: controls intended for prose or rich/compound content. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(
+  textarea.crm-form-textarea,
+  .crm-form-wysiwyg,
+  .crm-wysiwyg,
+  .note-editor,
+  .cke,
+  .tox-tinymce
+) {
+  box-sizing: border-box;
+  inline-size: min(100%, var(--bronx-field-full)) !important;
+  max-inline-size: 100%;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(
+  input.crm-form-text:not(.crm-hidden-date),
+  select.crm-form-select,
+  select.crm-form-multiselect,
+  textarea.crm-form-textarea,
+  input.crm-form-file,
+  input[type="file"]
+) {
+  min-block-size: var(--crm-input-height);
+  padding: var(--crm-f-input-padding);
+  border: var(--crm-input-border);
+  border-radius: var(--crm-f-input-radius);
+  background: var(--crm-input-bg-color);
+  color: var(--crm-input-color);
+  font: inherit;
+  font-size: var(--crm-f-input-font-size);
+  line-height: 1.35;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(input.crm-form-file, input[type="file"]) {
+  padding: 0.25rem;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(input.crm-form-file, input[type="file"])::file-selector-button {
+  min-block-size: calc(var(--crm-input-height) - 0.625rem);
+  margin-inline-end: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  border: 0;
+  border-radius: calc(var(--crm-f-input-radius) - 0.125rem);
+  background: var(--crm-primary-color);
+  color: var(--crm-primary-text-color);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) textarea.crm-form-textarea {
+  min-block-size: 8rem;
+  resize: vertical;
+}
+
+/*
+ * CiviCRM appends a clear-date link after the visible date input. The link is
+ * visibility:hidden while empty, but still participates in flex layout and
+ * used to wrap onto a second line. Overlay it instead so the row stays 44px.
+ */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .crm-form-date-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  block-size: var(--crm-input-height);
+  min-block-size: var(--crm-input-height);
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .crm-form-date-wrapper > input.crm-form-date {
+  flex: 1 1 auto;
+  block-size: var(--crm-input-height);
+  padding-inline-end: 0.75rem;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block)
+  .crm-form-date-wrapper > input.crm-form-date.crm-placeholder-icon::placeholder {
+  text-align: end;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .crm-form-date-wrapper > .crm-clear-link {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: 0.375rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: 2rem;
+  block-size: 2rem;
+  margin: 0;
+  padding: 0;
+  transform: translateY(-50%);
+}
+
+/* Select2 3 writes inline pixel widths; the Profile must stay responsive. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container :is(
+  .select2-choice,
+  .select2-choices
+) {
+  box-sizing: border-box;
+  inline-size: 100% !important;
+  max-inline-size: 100%;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container :is(.select2-choice, .select2-choices) {
+  min-block-size: var(--crm-input-height);
+  border: var(--crm-input-border);
+  border-radius: var(--crm-f-input-radius);
+  background: var(--crm-input-bg-color);
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container .select2-choice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-inline: 0.75rem 2.375rem;
+}
+
+/* Match the multi-select's 38px trailing icon area. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block)
+  .select2-container:not(.select2-container-multi) .select2-arrow {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: 2.375rem;
+  block-size: auto;
+}
+
+/* Allow-clear selects need a separate, centered X immediately before the arrow. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block)
+  .select2-container.select2-allowclear .select2-choice {
+  padding-inline-end: 4.125rem;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block)
+  .select2-container.select2-allowclear .select2-choice .select2-search-choice-close {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: auto;
+  inset-inline-end: 2.875rem;
+  inline-size: 0.75rem;
+  block-size: 0.8125rem;
+  margin: 0;
+  transform: translateY(-50%);
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container .select2-chosen {
+  overflow: hidden;
+  min-inline-size: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * Select2 3 measures its internal search field in pixels. Do not make that
+ * list item 100% wide: doing so creates an extra empty row and an 86px-tall
+ * multiselect. Let choices wrap naturally and keep the search area flexible.
+ */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container-multi {
+  block-size: auto !important;
+  min-block-size: var(--crm-input-height);
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container-multi .select2-choices {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  block-size: auto !important;
+  min-block-size: var(--crm-input-height);
+  margin: 0;
+  padding: 0.3125rem 2.375rem 0.3125rem 0.5rem;
+  overflow: visible;
+  list-style: none;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container-multi .select2-choices::before {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: 0.75rem;
+  margin: 0;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container-multi .select2-search-choice {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 1 auto;
+  max-inline-size: 100%;
+  margin: 0;
+  padding: 0.25rem 0.625rem 0.25rem 1.75rem;
+  border: 1px solid var(--crm-border-color);
+  border-radius: calc(var(--crm-f-input-radius) - 0.125rem);
+  background: color-mix(in srgb, var(--crm-border-color) 22%, var(--crm-input-bg-color));
+  list-style: none;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block)
+  .select2-container-multi .select2-search-choice .select2-search-choice-close {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 0.5rem;
+  inset-inline-end: auto;
+  inline-size: 0.75rem;
+  block-size: 0.8125rem;
+  margin: 0;
+  transform: translateY(-50%);
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container-multi .select2-search-field {
+  flex: 1 1 8rem;
+  inline-size: auto !important;
+  min-inline-size: 6rem;
+  margin: 0;
+  list-style: none;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container-multi :is(
+  .select2-search-choice,
+  .select2-search-field
+)::marker {
+  content: "";
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .select2-container-multi .select2-search-field .select2-input {
+  box-sizing: border-box;
+  inline-size: 100% !important;
+  min-block-size: 2rem;
+  margin: 0;
+  padding: 0.25rem 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/*
+ * Select2 3 moves the open results panel under <body>, outside its container.
+ * Its inline width already matches the originating control, but River's
+ * dropdown minimum can make it wider on narrow layouts. Remove that minimum
+ * from public Select2 panels while retaining a viewport safety cap.
+ */
+.select2-drop.crm-container.crm-public {
+  box-sizing: border-box;
+  min-inline-size: 0 !important;
+  max-inline-size: calc(100vw - 1rem) !important;
+}
+
+/* Make checkbox/radio choices distinct, readable touch targets. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .crm-multiple-checkbox-radio-options {
+  display: grid;
+  gap: 0.5rem;
+  inline-size: min(100%, var(--bronx-field-standard));
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .crm-option-label-pair {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-block-size: 2.75rem;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--crm-border-color);
+  border-radius: var(--crm-f-input-radius);
+  background: var(--crm-input-bg-color);
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .crm-option-label-pair :is(input[type="radio"], input[type="checkbox"]) {
+  flex: 0 0 auto;
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  margin: 0;
+  accent-color: var(--crm-primary-color);
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .crm-option-label-pair label {
+  flex: 1 1 auto;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/*
+ * Field help rows are siblings of their controls in legacy Profile markup,
+ * so they cannot inherit a control's width directly. Keep both pre- and
+ * post-help readable at the wide tier while allowing them to shrink on mobile.
+ */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > :is(.helprow-pre, .helprow-post) {
+  box-sizing: border-box;
+  inline-size: min(100%, var(--bronx-field-wide));
+  max-inline-size: 100%;
+  padding: 0;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > .helprow-post {
+  margin: -0.875rem 0 1.25rem;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > :is(.helprow-pre, .helprow-post) > .content.description {
+  float: none;
+  inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--crm-inactive-color);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) > .messages.help {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-inline-start: 0.25rem solid var(--crm-info-color);
+  border-radius: var(--crm-f-input-radius);
+  background: var(--crm-info-light-color);
+  color: var(--crm-info-ink-color);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* Keep Summernote's utility buttons compact and visually subordinate. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .note-editor .note-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  padding: 0.5rem;
+  border-block-end: 1px solid var(--crm-border-color);
+  background: color-mix(in srgb, var(--crm-border-color) 16%, var(--crm-input-bg-color));
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .note-editor .note-toolbar .note-btn-group {
+  display: inline-flex;
+  gap: 0.125rem;
+  margin: 0;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .note-editor .note-toolbar .note-btn:not(.note-color-btn) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-inline-size: 2rem;
+  min-block-size: 2rem;
+  padding: 0.375rem 0.5rem;
+  border: 1px solid var(--crm-border-color);
+  border-radius: 0.25rem;
+  background: var(--crm-input-bg-color);
+  color: var(--crm-text-color);
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .note-editor .note-toolbar .note-btn:not(.note-color-btn):hover {
+  border-color: var(--crm-primary-color);
+  background: color-mix(in srgb, var(--crm-primary-color) 8%, var(--crm-input-bg-color));
+  color: var(--crm-primary-color);
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) .note-editor .note-toolbar .note-color-btn {
+  min-inline-size: 1.25rem;
+  min-block-size: 1.25rem;
+  padding: 0;
+}
+
+/* Focus and errors stay visible independently of CMS styling. */
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(
+  input,
+  select,
+  textarea,
+  .select2-choice,
+  .select2-choices
+):focus-visible {
+  border-color: var(--crm-focus-color);
+  outline: 3px solid color-mix(in srgb, var(--crm-focus-color) 28%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(.crm-error, .error) :is(input, select, textarea),
+#crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(input, select, textarea).crm-error {
+  border-color: var(--crm-danger-color);
+  outline: 3px solid color-mix(in srgb, var(--crm-danger-color) 18%, transparent);
+}
+
+/* Account creation is outside .crm-profile but should use the same vocabulary. */
+#crm-container.crm-public form.CRM_Event_Form_Registration_Register
+  .cms_user-section input.crm-form-text {
+  box-sizing: border-box;
+  inline-size: min(100%, var(--bronx-field-standard)) !important;
+  max-inline-size: 100%;
+}
+
+/*
+ * Event and contribution price sets
+ * ---------------------------------
+ * Remove legacy label floats and give every price field a predictable stacked
+ * structure. This applies to quantity, select, radio, and checkbox prices.
+ * CiviContribute uses the same price-field markup without an outer
+ * .priceset-group. Scope to CiviCRM's reusable component classes so the layer
+ * works on every public page and CMS without page, event, or profile IDs.
+ */
+#crm-container.crm-public .priceset-group {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  margin: 0;
+  padding: var(--crm-f-fieldset-padding);
+  border: 0;
+  background: transparent;
+}
+
+#crm-container.crm-public .priceset-group > legend {
+  box-sizing: border-box;
+  inline-size: 100%;
+  margin: var(--crm-f-legend-margin);
+  padding: var(--crm-f-legend-padding);
+  border-style: solid;
+  border-color: var(--crm-border-color);
+  border-width: var(--crm-f-legend-border);
+  color: var(--crm-text-color);
+  font-size: var(--crm-f-legend-size);
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+#crm-container.crm-public .price_set-section > .messages.help {
+  box-sizing: border-box;
+  inline-size: 100%;
+  margin: 0 0 1.25rem;
+}
+
+#crm-container.crm-public
+  .price_set-section > .crm-section[class*="crm-price-field-id-"] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem;
+  min-inline-size: 0;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+#crm-container.crm-public
+  .price_set-section > .crm-section[class*="crm-price-field-id-"] > :is(.label, .content) {
+  float: none;
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  text-align: start;
+}
+
+#crm-container.crm-public
+  .price_set-section > .crm-section[class*="crm-price-field-id-"] > .label,
+#crm-container.crm-public
+  .price_set-section > .crm-section[class*="crm-price-field-id-"] > .label label {
+  color: var(--crm-text-color);
+  font-weight: var(--crm-f-label-weight);
+  line-height: 1.4;
+}
+
+#crm-container.crm-public
+  .price_set-section > .crm-section[class*="crm-price-field-id-"] > .content:has(
+    > input.crm-form-text,
+    > select.crm-form-select
+  ) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#crm-container.crm-public .price_set-section input.crm-form-text {
+  box-sizing: border-box;
+  inline-size: min(100%, 6rem) !important;
+  min-block-size: var(--crm-input-height);
+  padding: var(--crm-f-input-padding);
+  border: var(--crm-input-border);
+  border-radius: var(--crm-f-input-radius);
+  background: var(--crm-input-bg-color);
+  color: var(--crm-input-color);
+  font: inherit;
+}
+
+#crm-container.crm-public .price_set-section select.crm-form-select {
+  box-sizing: border-box;
+  inline-size: min(100%, var(--bronx-field-standard)) !important;
+  min-block-size: var(--crm-input-height);
+  padding: var(--crm-f-input-padding);
+  border: var(--crm-input-border);
+  border-radius: var(--crm-f-input-radius);
+  background: var(--crm-input-bg-color);
+  color: var(--crm-input-color);
+  font: inherit;
+}
+
+#crm-container.crm-public .price_set-section .description {
+  flex-basis: 100%;
+  margin: 0.125rem 0 0;
+  color: var(--crm-inactive-color);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+#crm-container.crm-public .price_set-section .price-set-row {
+  display: block;
+  margin: 0 0 0.5rem;
+}
+
+#crm-container.crm-public .price_set-section .price-set-option-content {
+  display: block;
+}
+
+#crm-container.crm-public .price_set-section .crm-option-label-pair {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  box-sizing: border-box;
+  inline-size: min(100%, var(--bronx-field-standard));
+  min-block-size: 2.75rem;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--crm-border-color);
+  border-radius: var(--crm-f-input-radius);
+  background: var(--crm-input-bg-color);
+}
+
+#crm-container.crm-public
+  .price_set-section .crm-option-label-pair > :is(input[type="radio"], input[type="checkbox"]) {
+  flex: 0 0 auto;
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  margin: 0;
+  accent-color: var(--crm-primary-color);
+}
+
+#crm-container.crm-public .price_set-section .crm-option-label-pair > label {
+  display: flex;
+  align-items: baseline;
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  margin: 0;
+  line-height: 1.35;
+}
+
+#crm-container.crm-public
+  .price_set-section .crm-option-label-pair .crm-price-amount-amount {
+  margin-inline-start: 0;
+  padding-inline-start: 0;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+#crm-container.crm-public
+  .price_set-section .crm-option-label-pair:has(> input:checked) {
+  border-color: var(--crm-primary-color);
+  background: color-mix(in srgb, var(--crm-primary-color) 7%, var(--crm-input-bg-color));
+}
+
+#crm-container.crm-public
+  .price_set-section .crm-option-label-pair:has(> input:focus-visible) {
+  outline: 3px solid color-mix(in srgb, var(--crm-focus-color) 28%, transparent);
+  outline-offset: 2px;
+}
+
+/* A hidden contribution total must remain hidden until CiviCRM reveals it. */
+#crm-container.crm-public
+  .price_set-section > .section-pricesetTotal.hiddenElement {
+  display: none !important;
+}
+
+#crm-container.crm-public
+  .price_set-section > .section-pricesetTotal:not(.hiddenElement) {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  box-sizing: border-box;
+  inline-size: min(100%, var(--bronx-field-standard));
+  margin: 0.25rem 0 0;
+  padding: 0.875rem 0 0;
+  border-block-start: 1px solid var(--crm-border-color);
+}
+
+#crm-container.crm-public
+  .price_set-section > .section-pricesetTotal:not(.hiddenElement) > :is(.label, .content) {
+  float: none;
+  inline-size: auto;
+  margin: 0;
+  padding: 0;
+}
+
+#crm-container.crm-public
+  .price_set-section > .section-pricesetTotal:not(.hiddenElement) > .label,
+#crm-container.crm-public
+  .price_set-section > .section-pricesetTotal:not(.hiddenElement) > .content {
+  font-weight: 650;
+}
+
+/*
+ * Native single selects
+ * ---------------------
+ * Keep the operating system's option menu, but replace inconsistent browser
+ * arrows with the same compact trailing icon area on every public Civi page.
+ */
+#crm-container.crm-public form select.crm-form-select:not([multiple]) {
+  /* River's generic form-control shorthand has intentionally high specificity. */
+  padding-inline-end: 2.75rem !important;
+  appearance: none;
+  background-color: var(--crm-input-bg-color) !important;
+  background-image: var(--bronx-select-arrow) !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.875rem center !important;
+  background-size: 1rem 1rem !important;
+}
+
+[dir="rtl"] #crm-container.crm-public form select.crm-form-select:not([multiple]) {
+  background-position: left 0.875rem center !important;
+}
+
+#crm-container.crm-public .crm-submit-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  box-sizing: border-box;
+  inline-size: min(100%, var(--crm-f-form-width));
+  margin: 1.5rem auto 0;
+  padding: 0;
+}
+
+#crm-container.crm-public .crm-submit-buttons .crm-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-inline-size: 12rem;
+  min-block-size: 2.75rem;
+  padding: var(--crm-btn-padding-block) var(--crm-btn-padding-inline);
+  border: 0;
+  border-radius: var(--crm-btn-radius);
+  background: var(--crm-primary-color);
+  color: var(--crm-primary-text-color);
+  font: inherit;
+  font-weight: 650;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#crm-container.crm-public .crm-submit-buttons .crm-button > i.crm-i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: auto;
+  min-inline-size: 0;
+  block-size: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+#crm-container.crm-public .crm-submit-buttons .crm-button:hover {
+  background: var(--crm-primary-hover-color);
+  color: var(--crm-primary-text-color);
+}
+
+#crm-container.crm-public .crm-submit-buttons .crm-button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--crm-focus-color) 35%, transparent);
+  outline-offset: 3px;
+}
+
+/*
+ * Google's normal reCAPTCHA is a fixed 304px widget. Center its CiviCRM table
+ * independently so narrow CMS content columns do not pin it to one side.
+ */
+#crm-container.crm-public table.form-layout-compressed:has(.g-recaptcha) {
+  inline-size: 304px;
+  max-inline-size: none;
+  margin-inline: calc((100% - 304px) / 2);
+  table-layout: fixed;
+}
+
+#crm-container.crm-public table.form-layout-compressed:has(.g-recaptcha) :is(
+  td,
+  .g-recaptcha
+) {
+  margin-block: 0;
+  padding: 0;
+}
+
+#crm-container.crm-public table.form-layout-compressed:has(.g-recaptcha) .recaptcha_label {
+  display: none;
+}
+
+/*
+ * FormBuilder / Afform
+ * --------------------
+ * Afform owns its layout. Bronx fills the slots selected in FormBuilder and
+ * styles the controls, but does not replace .af-layout-cols or
+ * .af-layout-inline with a legacy Profile layout.
+ */
+.crm-container .afform-directive {
+  --bronx-afform-control-height: 3rem;
+  --bronx-afform-field-gap: 1.25rem;
+  --bronx-afform-layout-gap: 1rem;
+}
+
+.crm-container .afform-directive af-form {
+  container-type: inline-size;
+  display: block;
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.crm-container .afform-directive .af-container {
+  box-sizing: border-box;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.crm-container .afform-directive :is(
+  .af-container.af-layout-cols,
+  .af-container.af-layout-inline
+) {
+  align-items: flex-start;
+  gap: var(--bronx-afform-layout-gap);
+}
+
+.crm-container .afform-directive .af-container.af-layout-cols > * {
+  min-inline-size: 0;
+}
+
+.crm-container .afform-directive af-field:not(.af-field-type-hidden) {
+  display: block;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  margin-block-end: var(--bronx-afform-field-gap);
+}
+
+/* Preserve FormBuilder semantics even when River or a CMS changes defaults. */
+.crm-container .afform-directive af-field.af-field-type-hidden {
+  display: none;
+  margin: 0;
+}
+
+.crm-container .afform-directive .af-container.af-layout-inline > af-field {
+  margin-block-end: 0;
+}
+
+.crm-container .afform-directive af-field:not(
+  .af-field-type-hidden,
+  .af-field-type-checkbox,
+  .af-field-type-radio
+)
+  > .crm-af-field-label {
+  display: block;
+  margin: 0 0 0.5rem;
+  color: var(--crm-text-color);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.crm-container .afform-directive af-field:not(
+  .af-field-type-hidden,
+  .af-field-type-checkbox,
+  .af-field-type-radio
+)
+  > .crm-af-field {
+  display: block;
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.crm-container .afform-directive af-field:not(
+  .af-field-type-hidden,
+  .af-field-type-checkbox,
+  .af-field-type-radio
+)
+  > .crm-af-field
+  > :is(input.form-control, select.form-control, textarea.form-control) {
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-block-size: var(--bronx-afform-control-height);
+  padding: 0.625rem 0.75rem;
+  border: var(--crm-input-border);
+  border-radius: var(--crm-input-border-radius);
+  background: var(--crm-input-bg-color);
+  color: var(--crm-input-color);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.crm-container .afform-directive af-field > .crm-af-field > textarea.form-control {
+  min-block-size: 8rem;
+  resize: vertical;
+}
+
+.crm-container .afform-directive af-field > .crm-af-field > .select2-container {
+  box-sizing: border-box;
+  inline-size: 100% !important;
+  max-inline-size: 100%;
+}
+
+.crm-container .afform-directive af-field > .crm-af-field > .select2-container :is(
+  .select2-choice,
+  .select2-choices
+) {
+  box-sizing: border-box;
+  inline-size: 100% !important;
+  max-inline-size: 100%;
+  min-block-size: var(--bronx-afform-control-height);
+  border-radius: var(--crm-input-border-radius);
+}
+
+.crm-container .afform-directive af-field > .crm-af-field > :is(
+  input.form-control,
+  select.form-control,
+  textarea.form-control
+):focus-visible,
+.crm-container .afform-directive af-field > .crm-af-field > .select2-container :is(
+  .select2-choice,
+  .select2-choices
+):focus-visible {
+  border-color: var(--crm-focus-color);
+  outline: 3px solid color-mix(in srgb, var(--crm-focus-color) 28%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+form#bootstrap-theme .afform-directive .af-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-sizing: border-box;
+  min-inline-size: 7.5rem;
+  min-block-size: var(--bronx-afform-control-height);
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--crm-btn-radius);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+form#bootstrap-theme .afform-directive .af-button:has(> i.crm-i) {
+  padding: 0.625rem 1.25rem;
+}
+
+form#bootstrap-theme .afform-directive .af-button > i.crm-i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: auto;
+  min-inline-size: 0;
+  block-size: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+/* Reflow based on the form's actual column, not the browser viewport. */
+@container (max-width: 32rem) {
+  .crm-container .afform-directive .af-container.af-layout-cols {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .crm-container .afform-directive .af-container.af-layout-cols > * {
+    flex-basis: auto;
+    box-sizing: border-box;
+    inline-size: 100%;
+    max-inline-size: 100%;
+  }
+}
+
+@media (max-width: 48rem) {
+  #crm-container.crm-public :is(
+    form.CRM_Event_Form_Registration_Register,
+    form.CRM_Profile_Form_Edit,
+    form.CRM_Contribute_Form_Contribution_Main
+  ) {
+    inline-size: 100%;
+    max-inline-size: none;
+  }
+
+  #crm-container.crm-public :where(.crm-profile, #crm-profile-block) {
+    padding-block: 1rem;
+  }
+
+  #crm-container.crm-public :where(.crm-profile, #crm-profile-block) > .crm-section.form-item {
+    margin-block-end: 1rem;
+  }
+
+  #crm-container.crm-public :where(.crm-profile, #crm-profile-block) :is(
+    input.crm-form-text:not(.crm-hidden-date),
+    select.crm-form-select,
+    select.crm-form-multiselect,
+    textarea.crm-form-textarea,
+    input.crm-form-file,
+    input[type="file"],
+    .crm-form-date-wrapper,
+    .select2-container,
+    .crm-form-wysiwyg,
+    .crm-wysiwyg,
+    .note-editor,
+    .cke,
+    .tox-tinymce,
+    .crm-multiple-checkbox-radio-options
+  ) {
+    inline-size: 100% !important;
+  }
+
+  #crm-container.crm-public form.CRM_Event_Form_Registration_Register
+    .additional_participants-section > .content {
+    display: block;
+  }
+
+  #crm-container.crm-public form.CRM_Event_Form_Registration_Register
+    .additional_participants-section > .content > select.crm-form-select {
+    margin-block-end: 0.375rem;
+  }
+
+  #crm-container.crm-public .crm-submit-buttons {
+    inline-size: 100%;
+  }
+
+  #crm-container.crm-public .crm-submit-buttons .crm-button {
+    inline-size: auto;
+    max-inline-size: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #crm-container.crm-public :where(.crm-profile, #crm-profile-block) *,
+  #crm-container.crm-public :where(.crm-profile, #crm-profile-block) *::before,
+  #crm-container.crm-public :where(.crm-profile, #crm-profile-block) *::after,
+  .crm-container .afform-directive *,
+  .crm-container .afform-directive *::before,
+  .crm-container .afform-directive *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
