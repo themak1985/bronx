@@ -1,13 +1,23 @@
 # Bronx
 
 Bronx is a lightweight, modern, mobile-first frontend Stream for CiviCRM's
-RiverLea theme framework. It improves the presentation and responsiveness of
-public-facing CiviCRM forms without changing CiviCRM core or requiring a
-CMS-specific plugin.
+[RiverLea theme framework](https://docs.civicrm.org/dev/en/latest/theming/structure/).
+It improves the presentation and responsiveness of public-facing CiviCRM forms
+without changing CiviCRM core or requiring a CMS-specific plugin.
 
 WordPress is the initial reference platform, but Bronx styles CiviCRM markup
 rather than WordPress pages or theme classes. It is intended to work with every
 CMS supported by CiviCRM.
+
+## Why Bronx exists
+
+Bronx began in response to a practical need: public CiviCRM Profiles and forms
+can feel visually dated, inconsistent, or awkward on mobile when embedded in a
+modern website. Bashar Makhay developed Bronx in collaboration with OpenAI's
+ChatGPT Codex, using real CiviCRM forms and repeated desktop and mobile testing.
+The goal is a cleaner, more dependable frontend experience that remains within
+CiviCRM's supported theming system rather than replacing its forms or modifying
+CiviCRM core.
 
 > Bronx is currently an alpha release. Test it on a staging site before using
 > it in production.
@@ -51,19 +61,6 @@ Bronx is a native CiviCRM extension. A WordPress plugin is not required.
 
 If styling prevents access to Display Settings, add `safe_css=1` to that
 page's URL to bypass Stream styling temporarily.
-
-### Migrating from Bronx 0.5.x
-
-Version 0.6.0 changed the extension key from `org.civicrm.bronx` to `bronx`.
-CiviCRM therefore treats it as a different extension.
-
-1. Select another frontend Stream.
-2. Disable and uninstall **Bronx CiviCRM Theme** 0.5.x.
-3. Remove the old `org.civicrm.bronx` directory.
-4. Install Bronx 0.6.0 and select **Bronx** again.
-5. Flush CiviCRM caches.
-
-Bronx creates no user data or custom database tables.
 
 ## Scope and design principles
 
