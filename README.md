@@ -5,22 +5,31 @@ Bronx is a lightweight, modern, mobile-first frontend Stream for CiviCRM's
 It improves the presentation and responsiveness of public-facing CiviCRM forms
 without changing CiviCRM core or requiring a CMS-specific plugin.
 
-WordPress is the initial reference platform, but Bronx styles CiviCRM markup
-rather than WordPress pages or theme classes. It is intended to work with every
-CMS supported by CiviCRM.
+Bronx has only been tested on WordPress so far. It styles CiviCRM markup rather
+than WordPress pages or theme classes and is intended to be CMS-agnostic, but
+that portability has not yet been verified on other platforms.
 
 ## Why Bronx exists
 
 Bronx began in response to a practical need: public CiviCRM Profiles and forms
 can feel visually dated, inconsistent, or awkward on mobile when embedded in a
-modern website. Bashar Makhay developed Bronx in collaboration with OpenAI's
-ChatGPT Codex, using real CiviCRM forms and repeated desktop and mobile testing.
+modern website. Bashar Makhay developed Bronx using OpenAI's ChatGPT Codex,
+testing it against real CiviCRM forms on WordPress at desktop and mobile sizes.
 The goal is a cleaner, more dependable frontend experience that remains within
 CiviCRM's supported theming system rather than replacing its forms or modifying
 CiviCRM core.
 
 > Bronx is currently an alpha release. Test it on a staging site before using
 > it in production.
+
+## Testing status
+
+Testing to date has been limited to WordPress, principally with the Twenty
+Twenty-Five theme and Twentig. More testing is needed across other WordPress
+themes, configurations, form types, browsers, and assistive technologies.
+Testing and issue reports from Drupal, Joomla, Backdrop, and CiviCRM Standalone
+users are especially welcome. Cross-CMS support should be considered an
+intention, not a verified claim, until that testing has taken place.
 
 ## Features
 
@@ -44,7 +53,7 @@ CiviCRM core.
 | RiverLea | Enabled |
 | PHP | 8.1–8.5 |
 | Smarty | 5.0 |
-| CMS | WordPress reference implementation; designed to be CMS-agnostic |
+| CMS | Tested on WordPress only; broader CMS testing wanted |
 
 Bronx is a native CiviCRM extension. A WordPress plugin is not required.
 
