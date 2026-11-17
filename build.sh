@@ -3,7 +3,7 @@ set -eu
 
 root_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 dist_dir="$root_dir/dist"
-artifact="$dist_dir/bronx-0.6.0.zip"
+artifact="$dist_dir/bronx-0.7.0.zip"
 stage_dir=$(mktemp -d "${TMPDIR:-/tmp}/bronx-build.XXXXXX")
 
 cleanup() {

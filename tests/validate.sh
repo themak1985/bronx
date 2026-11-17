@@ -43,8 +43,8 @@ $required_files
 EOF
 
 grep -q '<extension key="bronx"' "$extension_dir/info.xml"
-grep -q '<version>0.6.0</version>' "$extension_dir/info.xml"
-grep -q '<ver>6.16</ver>' "$extension_dir/info.xml"
+grep -q '<version>0.7.0</version>' "$extension_dir/info.xml"
+grep -q '<ver>6.18</ver>' "$extension_dir/info.xml"
 grep -q '<smarty_compatibility>' "$extension_dir/info.xml"
 grep -q '<ver>5.0</ver>' "$extension_dir/info.xml"
 grep -q '<php_compatibility>' "$extension_dir/info.xml"
@@ -85,11 +85,22 @@ grep -q 'class="g-recaptcha"' "$fixture"
 grep -q '#crm-main-content-wrapper' "$stream_css"
 grep -q 'table.form-layout-compressed:has(.g-recaptcha)' "$stream_css"
 grep -q '\.crm-container \.afform-directive' "$stream_css"
+grep -q -- '--crm-f-input-width: 100%' "$stream_css"
+grep -q -- '--crm-input-width: 100%' "$stream_css"
 grep -q 'container-type: inline-size' "$stream_css"
 grep -q '\.af-container\.af-layout-cols' "$stream_css"
 grep -q '@container (max-width: 32rem)' "$stream_css"
 grep -q 'class="afform-directive"' "$afform_fixture"
 grep -q 'af-layout-cols' "$afform_fixture"
+grep -q 'af-layout-inline' "$afform_fixture"
+grep -q 'af-field-type-entity-ref af-field-type-multiple' "$afform_fixture"
+grep -q 'class="crm-form-textarea"' "$afform_fixture"
+grep -q 'af-field-type-file' "$afform_fixture"
+grep -q 'af-field-type-checkbox' "$afform_fixture"
+grep -q 'af-field-type-radio' "$afform_fixture"
+grep -q 'af-field-type-toggle' "$afform_fixture"
+grep -q 'crm-af-field-help-pre' "$afform_fixture"
+grep -q 'crm-af-field-help-post' "$afform_fixture"
 grep -q 'af-field-type-hidden' "$afform_fixture"
 grep -q 'af-field\.af-field-type-hidden' "$stream_css"
 grep -q 'class="crm-public-form-item crm-group priceset-group"' "$event_fixture"
@@ -126,6 +137,12 @@ fi
 
 if grep -q '\.name-row' "$stream_css"; then
   echo "Stream CSS must not contain the Tarab-specific Afform class." >&2
+  exit 1
+fi
+
+afform_css=$(sed -n '/FormBuilder \/ Afform/,/Reflow based/p' "$stream_css")
+if printf '%s\n' "$afform_css" | grep -q 'inline-size: 100% !important'; then
+  echo "Afform must use RiverLea width tokens instead of forced inline widths." >&2
   exit 1
 fi
 

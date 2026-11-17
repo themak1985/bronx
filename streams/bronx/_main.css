@@ -949,9 +949,11 @@
  * .af-layout-inline with a legacy Profile layout.
  */
 .crm-container .afform-directive {
-  --bronx-afform-control-height: 3rem;
+  /* Match Thames: RiverLea controls fill the slot chosen in FormBuilder. */
+  --crm-f-input-width: 100%;
+  --crm-input-width: 100%;
+  --bronx-afform-control-height: var(--crm-input-height);
   --bronx-afform-field-gap: 1.25rem;
-  --bronx-afform-layout-gap: 1rem;
 }
 
 .crm-container .afform-directive af-form {
@@ -974,7 +976,6 @@
   .af-container.af-layout-inline
 ) {
   align-items: flex-start;
-  gap: var(--bronx-afform-layout-gap);
 }
 
 .crm-container .afform-directive .af-container.af-layout-cols > * {
@@ -1019,42 +1020,18 @@
   .af-field-type-radio
 )
   > .crm-af-field {
-  display: block;
   box-sizing: border-box;
-  inline-size: 100%;
   max-inline-size: 100%;
   min-inline-size: 0;
 }
 
-.crm-container .afform-directive af-field:not(
-  .af-field-type-hidden,
-  .af-field-type-checkbox,
-  .af-field-type-radio
-)
-  > .crm-af-field
-  > :is(input.form-control, select.form-control, textarea.form-control) {
-  box-sizing: border-box;
-  inline-size: 100%;
-  max-inline-size: 100%;
-  min-block-size: var(--bronx-afform-control-height);
-  padding: 0.625rem 0.75rem;
-  border: var(--crm-input-border);
-  border-radius: var(--crm-input-border-radius);
-  background: var(--crm-input-bg-color);
-  color: var(--crm-input-color);
-  font: inherit;
-  font-size: 1rem;
-  line-height: 1.35;
-}
-
-.crm-container .afform-directive af-field > .crm-af-field > textarea.form-control {
+.crm-container .afform-directive af-field > .crm-af-field > textarea {
   min-block-size: 8rem;
   resize: vertical;
 }
 
 .crm-container .afform-directive af-field > .crm-af-field > .select2-container {
   box-sizing: border-box;
-  inline-size: 100% !important;
   max-inline-size: 100%;
 }
 
@@ -1063,16 +1040,13 @@
   .select2-choices
 ) {
   box-sizing: border-box;
-  inline-size: 100% !important;
   max-inline-size: 100%;
-  min-block-size: var(--bronx-afform-control-height);
-  border-radius: var(--crm-input-border-radius);
 }
 
 .crm-container .afform-directive af-field > .crm-af-field > :is(
   input.form-control,
   select.form-control,
-  textarea.form-control
+  textarea
 ):focus-visible,
 .crm-container .afform-directive af-field > .crm-af-field > .select2-container :is(
   .select2-choice,

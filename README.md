@@ -49,7 +49,7 @@ intention, not a verified claim, until that testing has taken place.
 
 | Dependency | Supported version |
 | --- | --- |
-| CiviCRM | 6.16 or newer |
+| CiviCRM | 6.18 or newer |
 | RiverLea | Enabled |
 | PHP | 8.1–8.5 |
 | Smarty | 5.0 |
@@ -115,7 +115,7 @@ contributions, Afform, and 390-pixel mobile layouts.
 
 Validation checks the manifest, stable selector rules, representative markup,
 and the stylesheet budgets. The main stylesheet must remain below 40 KiB raw
-and 8 KiB when compressed. `build.sh` creates `dist/bronx-0.6.0.zip` with a
+and 8 KiB when compressed. `build.sh` creates `dist/bronx-0.7.0.zip` with a
 top-level `bronx/` installation directory.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) before proposing changes and

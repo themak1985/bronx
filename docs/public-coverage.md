@@ -46,7 +46,8 @@ verified the markup and responsive behavior as part of its release contract.
 
 | Workflow or component | Status | Fixture or note |
 | --- | --- | --- |
-| Text, email, select, textarea, Select2, hidden fields | Covered | `afform-fields.html` |
+| Text, email, number, date, select, textarea, file and Select2 fields | Covered | Uses RiverLea controls in `afform-fields.html` |
+| Checkbox, radio, toggle and hidden fields | Covered | Preserves Afform/Core behavior |
 | Native column and inline layouts | Covered | Container-responsive fixture |
 | Conditional visibility and repeating groups | Planned | Must preserve FormBuilder ownership of layout |
 | Validation summaries and complex actions | Planned | Requires representative fixture |

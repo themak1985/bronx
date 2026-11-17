@@ -18,8 +18,12 @@
     }
     body { margin: 0; padding: 30px; color: var(--crm-text-color); font: 16px/1.5 system-ui, sans-serif; }
     .fixture-cms-column { inline-size: min(100%, 44rem); margin-inline: auto; }
+    .crm-container :is(input, select, textarea),
+    .crm-container .select2-container { box-sizing: border-box; width: var(--crm-input-width, 15em); }
+    .crm-container textarea { height: auto; width: 100%; }
+    .crm-container :is(input[type="checkbox"], input[type="radio"]) { width: auto; }
     .af-container.af-layout-cols,
-    .af-container.af-layout-inline { display: flex; flex-wrap: wrap; }
+    .af-container.af-layout-inline { display: flex; flex-wrap: wrap; gap: var(--crm-flex-gap, 0.5rem); }
     .af-container.af-layout-cols > * { flex: 1 1 0; }
   </style>
   <link rel="stylesheet" href="../../streams/bronx/_main.css">
@@ -43,15 +47,51 @@
             </div>
             <af-field class="af-field-type-email">
               <label class="crm-af-field-label" for="email">Email <span class="crm-marker">*</span></label>
+              <p class="crm-af-field-help-pre">We will only use this address for your subscription.</p>
               <div class="crm-af-field"><input id="email" class="form-control" type="email"></div>
+              <p class="crm-af-field-help-post">You can unsubscribe at any time.</p>
             </af-field>
             <af-field class="af-field-type-select">
               <label class="crm-af-field-label" for="interest">Interest</label>
               <div class="crm-af-field"><select id="interest" class="form-control"><option>Community events</option></select></div>
             </af-field>
+            <af-field class="af-field-type-entity-ref af-field-type-multiple">
+              <label class="crm-af-field-label" for="contacts">Contacts</label>
+              <div class="crm-af-field">
+                <div id="contacts" class="select2-container select2-container-multi">
+                  <ul class="select2-choices"><li class="select2-search-field"><input type="text"></li></ul>
+                </div>
+              </div>
+            </af-field>
             <af-field class="af-field-type-textarea">
               <label class="crm-af-field-label" for="notes">Notes</label>
-              <div class="crm-af-field"><textarea id="notes" class="form-control"></textarea></div>
+              <div class="crm-af-field"><textarea id="notes" class="crm-form-textarea"></textarea></div>
+            </af-field>
+            <div class="af-container af-layout-inline">
+              <af-field class="af-field-type-number">
+                <label class="crm-af-field-label" for="quantity">Quantity</label>
+                <div class="crm-af-field"><input id="quantity" class="form-control" type="number"></div>
+              </af-field>
+              <af-field class="af-field-type-date">
+                <label class="crm-af-field-label" for="start-date">Start date</label>
+                <div class="crm-af-field"><input id="start-date" class="form-control" type="text"></div>
+              </af-field>
+            </div>
+            <af-field class="af-field-type-file">
+              <label class="crm-af-field-label" for="attachment">Attachment</label>
+              <div class="crm-af-field"><input id="attachment" type="file"></div>
+            </af-field>
+            <af-field class="af-field-type-checkbox af-field-type-multiple">
+              <label class="crm-af-field-label">Topics</label>
+              <div class="crm-af-field"><ul class="crm-checkbox-list checkbox-plain"><li><label><input type="checkbox"> Events</label></li></ul></div>
+            </af-field>
+            <af-field class="af-field-type-radio">
+              <label class="crm-af-field-label">Contact preference</label>
+              <div class="crm-af-field"><label class="radio-inline"><input type="radio" name="contact-preference"> Email</label></div>
+            </af-field>
+            <af-field class="af-field-type-toggle">
+              <label class="crm-af-field-label">Updates</label>
+              <div class="crm-af-field crm-form-toggle-container"><input class="crm-form-toggle" type="checkbox"></div>
             </af-field>
             <af-field class="af-field-type-hidden">
               <label class="crm-af-field-label" for="hidden-membership">This label must stay hidden</label>

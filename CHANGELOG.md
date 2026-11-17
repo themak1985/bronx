@@ -3,6 +3,18 @@
 All notable changes to Bronx are documented here. Versions follow semantic
 versioning while the extension remains in active development.
 
+## [Unreleased]
+
+## [0.7.0] - 2026-11-17
+
+### Changed
+
+- Raised the minimum supported CiviCRM version from 6.16 to 6.18.
+- Simplified FormBuilder/Afform styling to follow RiverLea and Thames control
+  widths while preserving native row, column, and inline layouts.
+- Expanded Afform regression coverage for additional core field types, help
+  text, and embedded layouts.
+
 ## [0.6.0] - 2026-10-16
 
 ### Changed
@@ -26,3 +38,4 @@ registration, contributions, Price Sets, Select2 controls, field-width tiers,
 Afform isolation, and mobile behavior.
 
 [0.6.0]: https://github.com/themak1985/bronx/releases/tag/0.6.0
+[0.7.0]: https://github.com/themak1985/bronx/releases/tag/0.7.0
